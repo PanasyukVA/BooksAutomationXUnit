@@ -1,48 +1,21 @@
 ﻿using System;
 using BooksAutomationXUnit.Utilities;
-using Xunit;
 
 namespace BooksAutomationXUnit.Tests
 {
-    [TestClass]
-    public class BaseTest
+    class BaseTest : IDisposable
     {
-        private TestContext testContextInstance;
+        private TestFixture fixture;
 
-        public TestContext TestContext
+        public BaseTest(TestFixture fixture) 
         {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-        public static TestFixture fixture;
-
-        [AssemblyInitialize]
-        public static void AssemblyInitialize(TestContext context)
-        {
-            fixture = new TestFixture();
+            this.fixture = fixture;
         }
 
-        [AssemblyCleanup]
-        public static void AssemblyCleanUp()
+        public void Dispose()
         {
-            fixture.Dispose();
-        }
-
-        [TestCleanup]
-        public void TestCleanUp()
-        {
-            if (TestContext.CurrentTestOutcome == UnitTestOutcome.Failed)
-            {
-                fixture.Pages.booksPage.TakeScreenshot(fixture.driver, TestContext.TestResultsDirectory, TestContext.FullyQualifiedTestClassName);
-            }
             fixture.Pages.booksPage.ConfirmationResult();
-            fixture.Pages.loginPage.Logoff();
+            fixture.driver.Manage().Cookies.DeleteAllCookies();
         }
     }
 }

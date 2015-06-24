@@ -1,18 +1,23 @@
 ﻿using System;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using BooksAutomationXUnit.Utilities;
 using Xunit;
+using BooksAutomationXUnit.Utilities;
 
-namespace BooksAutomationXUnit.Tests.SmokeTests
+namespace BooksAutomationXUnit.Tests.Smoke
 {
-    public class LoadLoginPageSTest : BaseTest
+    class LoadLoginPageClass : BaseTest
     {
-        [Fact, Trait("TestCategory", "SmokeTests")]
+        private TestFixture fixture;
+
+        public LoadLoginPageClass(TestFixture fixture) 
+            : base(fixture)
+        {
+            this.fixture = fixture;
+        }
+
         public void LoadLoginPage()
         {
             // Arrange
-            string expectedPageCaption = "Log iin.";
+            string expectedPageCaption = "Log in.";
             string actualPageCaption;
 
             // Act

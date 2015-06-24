@@ -1,14 +1,19 @@
 ﻿using System;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using BooksAutomationXUnit.Utilities;
 using Xunit;
 
-namespace BooksAutomationXUnit.Tests.FunctionalTests
+namespace BooksAutomationXUnit.Tests.Functional
 {
-    public class EditBookFTest : BaseTest
+    class EditBookClass : BaseTest
     {
-        [Fact, Trait("TestCategory", "FunctionalTests")]
+        private TestFixture fixture;
+
+        public EditBookClass(TestFixture fixture)
+            : base(fixture)
+        {
+            this.fixture = fixture;
+        }
+
         public void EditBook()
         {
             // Arrange
@@ -17,7 +22,7 @@ namespace BooksAutomationXUnit.Tests.FunctionalTests
             // Act
             fixture.Pages.loginPage.GetPage();
             fixture.Pages.loginPage.Login(fixture.config.Books_UserEmail, fixture.config.Books_UserPassword);
-            fixture.Pages.booksPage.EditBook(1, "BookEditTest", new int[] {1, 2});
+            fixture.Pages.booksPage.EditBook(1, "BookEditTest", new int[] { 1, 2 });
             actualResult = fixture.Pages.booksPage.BookResultModalLabel.Displayed;
 
             // Assert

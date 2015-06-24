@@ -1,14 +1,19 @@
 ﻿using System;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using BooksAutomationXUnit.Utilities;
 using Xunit;
+using BooksAutomationXUnit.Utilities;
 
-namespace BooksAutomationXUnit.Tests.SmokeTests
+namespace BooksAutomationXUnit.Tests.Smoke
 {
-    public class LoadMainPageSTest : BaseTest
+    class LoadMainPageClass : BaseTest
     {
-        [Fact, Trait("TestCategory", "SmokeTests")]
+        private TestFixture fixture;
+
+        public LoadMainPageClass(TestFixture fixture)
+            : base(fixture)
+        {
+            this.fixture = fixture;
+        }
+
         public void LoadMainPage()
         {
             // Arrange

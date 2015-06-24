@@ -1,27 +1,32 @@
 ﻿using System;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using BooksAutomationXUnit.Utilities;
 using Xunit;
 
-namespace BooksAutomationXUnit.Tests.FunctionalTests
+namespace BooksAutomationXUnit.Tests.Functional
 {
-    public class AddAuthorFTest : BaseTest
+    class EditAuthorClass : BaseTest
     {
-        [Fact, Trait("TestCategory", "FunctionalTests")]
-        public void AddAuthor()
+        private TestFixture fixture;
+
+        public EditAuthorClass(TestFixture fixture)
+            : base(fixture)
+        {
+            this.fixture = fixture;
+        }
+
+        public void EditAuthor()
         {
             // Arrange
             bool actualResult;
-                
+
             // Act
             fixture.Pages.loginPage.GetPage();
             fixture.Pages.loginPage.Login(fixture.config.Books_UserEmail, fixture.config.Books_UserPassword);
-            fixture.Pages.booksPage.AddAuthor("AuthorAddTest");
+            fixture.Pages.booksPage.EditAuthor(1, "AuthorEditTest");
             actualResult = fixture.Pages.booksPage.AuthorResultModalLabel.Displayed;
-                
+
             // Assert
-            Assert.True(actualResult, "The author is not added.");
+            Assert.True(actualResult, "The author is not edited.");
         }
     }
 }

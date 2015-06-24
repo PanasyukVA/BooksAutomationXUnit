@@ -37,6 +37,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,23 +65,27 @@
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\PagesCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Runner.cs" />
     <Compile Include="Tests\BaseTest.cs" />
-    <Compile Include="Tests\FunctionalTests\AddAuthorFTest.cs" />
-    <Compile Include="Tests\FunctionalTests\AddBookFTest.cs" />
-    <Compile Include="Tests\FunctionalTests\EditAuthorFTest.cs" />
-    <Compile Include="Tests\FunctionalTests\EditBookFTest.cs" />
-    <Compile Include="Tests\SmokeTests\LoadLoginPageSTest.cs" />
-    <Compile Include="Tests\SmokeTests\LoadMainPageSTest.cs" />
-    <Compile Include="Tests\SmokeTests\LogInOnSiteSTest.cs" />
+    <Compile Include="Tests\Functional\AddAuthor.cs" />
+    <Compile Include="Tests\Functional\AddBook.cs" />
+    <Compile Include="Tests\Functional\EditAuthor.cs" />
+    <Compile Include="Tests\Functional\EditBook.cs" />
+    <Compile Include="Tests\Smoke\LogInOnSite.cs" />
+    <Compile Include="Tests\Smoke\LoadMainPage.cs" />
+    <Compile Include="Tests\Smoke\LoadLoginPage.cs" />
     <Compile Include="Utilities\CustomExpectedConditions.cs" />
     <Compile Include="Utilities\CustomMethods.cs" />
     <Compile Include="Utilities\TestFixture.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Configuration\app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
