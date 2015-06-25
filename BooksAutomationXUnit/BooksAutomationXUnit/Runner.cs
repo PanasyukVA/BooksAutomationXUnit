@@ -1,4 +1,5 @@
 ﻿using Xunit;
+using Xunit.Sdk;
 using BooksAutomationXUnit.Utilities;
 using BooksAutomationXUnit.Tests.Smoke;
 using BooksAutomationXUnit.Tests.Functional;
